@@ -2,7 +2,7 @@
 title: SSHキーの監査
 intro: サイト管理者は SSH キーのインスタンス全体に対する監査を始めることができます。
 redirect_from:
-  - /enterprise/admin/articles/auditing-ssh-keys/
+  - /enterprise/admin/articles/auditing-ssh-keys
   - /enterprise/admin/user-management/auditing-ssh-keys
   - /admin/user-management/auditing-ssh-keys
 versions:
@@ -50,9 +50,11 @@ fatal: The remote end hung up unexpectedly
 
 ## SSH キーを追加する
 
-新規ユーザは、SSHキーを追加する際にパスワードを要求されます。
+{% ifversion ghes %}
 
-![パスワードの確認](/assets/images/help/settings/sudo_mode_popup.png)
+When a new user adds an SSH key to an account, to confirm the user's access, {% data variables.product.product_name %} will prompt for authentication. For more information, see "[Sudo mode](/authentication/keeping-your-account-and-data-secure/sudo-mode)."
+
+{% endif %}
 
 ユーザがキーを追加したら、次のような通知メールが届きます。
 

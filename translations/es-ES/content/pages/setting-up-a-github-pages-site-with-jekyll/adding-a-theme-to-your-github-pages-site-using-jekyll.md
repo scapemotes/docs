@@ -2,10 +2,11 @@
 title: Agregar un tema a tu sitio de Páginas de GitHub con Jekyll
 intro: Puedes personalizar tu sitio Jekyll agregando y personalizando un tema.
 redirect_from:
-  - /articles/customizing-css-and-html-in-your-jekyll-theme/
-  - /articles/adding-a-jekyll-theme-to-your-github-pages-site/
+  - /articles/customizing-css-and-html-in-your-jekyll-theme
+  - /articles/adding-a-jekyll-theme-to-your-github-pages-site
   - /articles/adding-a-theme-to-your-github-pages-site-using-jekyll
   - /github/working-with-github-pages/adding-a-theme-to-your-github-pages-site-using-jekyll
+  - /pages/getting-started-with-github-pages/adding-a-theme-to-your-github-pages-site-with-the-theme-chooser
 product: '{% data reusables.gated-features.pages %}'
 versions:
   fpt: '*'
@@ -49,7 +50,7 @@ Las personas con permisos de escritura para un repositorio pueden agregar un tem
   ---
   ---
 
-  @import "{{ site.theme }}";
+  @import "{% raw %}{{ site.theme }}{% endraw %}";
   ```
 3. Agrega cualquier CSS o Sass personalizado que quieras (incluidas importaciones) inmediatamente después de la línea `@import`.
 

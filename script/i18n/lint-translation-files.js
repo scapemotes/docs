@@ -7,8 +7,10 @@
 //
 // [end-readme]
 
+// Remove this when removing translations directory B504EDD0
+
 import { execSync } from 'child_process'
-import program from 'commander'
+import { program } from 'commander'
 import fs from 'fs'
 
 // Set up supported linting check types and their corresponding commands.
@@ -79,7 +81,9 @@ function lintAndResetFiles(checkType) {
   // We are not passing --prefer-main because we want to remove the file so we
   // reset it directly to the English source
   filesToReset.forEach((file) => {
-    execSync(`script/i18n/reset-translated-file.js ${file}`)
+    execSync(`script/i18n/reset-translated-file.js ${file} --reason="${checkType} error"`, {
+      stdio: 'inherit',
+    })
   })
 
   // Print a message with next steps

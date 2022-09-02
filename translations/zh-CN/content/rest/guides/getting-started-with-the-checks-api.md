@@ -41,10 +41,7 @@ GitHub 应用程序可以报告丰富的状态信息、提供详细的代码行�
 
 ![检查运行工作流程](/assets/images/check_runs.png)
 
-{% ifversion fpt or ghes or ghae or ghec %}
-如果检查运行处于未完成状态超过 14 天，则检查运行的 `conclusion` 将变成 `stale`，并且通过
-{% octicon "issue-reopened" aria-label="The issue-reopened icon" %} 在 {% data variables.product.prodname_dotcom %} 上显示为 stale（过时）。 只有 {% data variables.product.prodname_dotcom %} 可以将检查运行标记为 `stale`。 有关检查运行之可能结论的更多信息，请参阅 [`conclusion` 参数](/rest/reference/checks#create-a-check-run--parameters)。
-{% endif %}
+If a check run is in an incomplete state for more than 14 days, then the check run's `conclusion` becomes `stale` and appears on {% data variables.product.prodname_dotcom %} as stale with {% octicon "issue-reopened" aria-label="The issue-reopened icon" %}. 只有 {% data variables.product.prodname_dotcom %} 可以将检查运行标记为 `stale`。 有关检查运行之可能结论的更多信息，请参阅 [`conclusion` 参数](/rest/reference/checks#create-a-check-run--parameters)。
 
 一旦收到 [`check_suite`](/webhooks/event-payloads/#check_suite) web 挂钩，您即可创建检查运行，即使检查尚未完成。 您可以在检查运行完成时使用值 `queued`、`in_progress` 或 `completed` 来更新其 `status`， 并且可以在更多详细信息可用时更新 `output`。 检查运行可以包含时间戳、指向外部站点上更多详细信息的链接、特定代码行的详细注释以及有关所执行分析的信息。
 
@@ -62,11 +59,7 @@ GitHub 应用程序可以报告丰富的状态信息、提供详细的代码行�
 
 例如，代码分析应用程序可以使用请求的操作在拉取请求中显示一个按钮，以自动修复检测到的语法错误。
 
-要创建可从您的程序请求额外操作的按钮，请在[创建检查运行](/rest/reference/checks/#create-a-check-run)时使用
-
-`actions` 对象。 例如，下面的 `actions` 对象在拉取请求中显示一个按钮，标签为“Fix this（修复此问题）”。 该按钮在检查运行完成后显示。 
-
-
+要创建可从您的程序请求额外操作的按钮，请在[创建检查运行](/rest/reference/checks/#create-a-check-run)时使用 [`actions` 对象](/rest/reference/checks#create-a-check-run--parameters)。 例如，下面的 `actions` 对象在拉取请求中显示一个按钮，标签为“Fix this（修复此问题）”。 该按钮在检查运行完成后显示。
 
    ```json
   "actions": [{
@@ -75,10 +68,15 @@ GitHub 应用程序可以报告丰富的状态信息、提供详细的代码行�
       "identifier": "fix_errors"
     }]
   ```
-</p> 
 
-![检查运行请求操作按钮](/assets/images/github-apps/github_apps_checks_fix_this_button.png)
+  ![检查运行请求操作按钮](/assets/images/github-apps/github_apps_checks_fix_this_button.png)
 
 当用户单击该按钮时，{% data variables.product.prodname_dotcom %} 会将 [`check_run.requested_action` web 挂钩](/webhooks/event-payloads/#check_run)发送到您的应用程序。 当您的应用程序收到 `check_run.requested_action` web 挂钩事件时，它可以在 web 挂钩有效负载中查找 `requested_action.identifier` 键，以确定单击了哪个按钮，并执行请求的任务。
 
 关于如何使用检查 API 设置请求操作的详细示例，请参阅“[使用检查 API 创建 CI 测试](/apps/quickstart-guides/creating-ci-tests-with-the-checks-api/#part-2-creating-the-octo-rubocop-ci-test)”。
+
+{% ifversion fpt or ghec %}
+## 检查数据的保留
+
+{% data reusables.pull_requests.retention-checks-data %}
+{% endif %}

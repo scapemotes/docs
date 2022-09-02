@@ -26,10 +26,10 @@ topics:
 
 リポジトリの表示設定を選択して、リポジトリにアクセスできるユーザを制限できます。 詳細は「[リポジトリの可視性について](#about-repository-visibility)」を参照してください。
 
-ユーザが所有するリポジトリでは、他の人々にコラボレーターアクセスを与えて、プロジェクトでコラボレーションするようにできます。 リポジトリが Organization によって所有されている場合は、Organization のメンバーにアクセス権限を与え、リポジトリ上でコラボレーションするようにできます。 For more information, see "[Permission levels for a user account repository](/articles/permission-levels-for-a-user-account-repository/)" and "[Repository roles for an organization](/organizations/managing-access-to-your-organizations-repositories/repository-roles-for-an-organization)."
+ユーザが所有するリポジトリでは、他の人々にコラボレーターアクセスを与えて、プロジェクトでコラボレーションするようにできます。 リポジトリが Organization によって所有されている場合は、Organization のメンバーにアクセス権限を与え、リポジトリ上でコラボレーションするようにできます。 For more information, see "[Permission levels for a personal account repository](/articles/permission-levels-for-a-user-account-repository/)" and "[Repository roles for an organization](/organizations/managing-access-to-your-organizations-repositories/repository-roles-for-an-organization)."
 
 {% ifversion fpt or ghec %}
-ユーザアカウントと Organization の {% data variables.product.prodname_free_team %} を使用すると、完全な機能セットを備えた無制限のパブリックリポジトリ、または機能セットを制限した無制限のプライベートリポジトリで無制限のコラボレータと連携できます。 プライベートリポジトリの高度なツールを入手するには、 {% data variables.product.prodname_pro %}、{% data variables.product.prodname_team %}、または {% data variables.product.prodname_ghe_cloud %} にアップグレードします。 {% data reusables.gated-features.more-info %}
+With {% data variables.product.prodname_free_team %} for personal accounts and organizations, you can work with unlimited collaborators on unlimited public repositories with a full feature set, or unlimited private repositories with a limited feature set. プライベートリポジトリの高度なツールを入手するには、 {% data variables.product.prodname_pro %}、{% data variables.product.prodname_team %}、または {% data variables.product.prodname_ghe_cloud %} にアップグレードします。 {% data reusables.gated-features.more-info %}
 {% else %}
 各個人および Organization は、無制限のリポジトリを所有でき、すべてのリポジトリにコラボレータを何人でも招待できます。
 {% endif %}
@@ -44,30 +44,37 @@ topics:
 
 ## リポジトリの可視性について
 
-リポジトリの可視性を選択することで、リポジトリにアクセスできるユーザを制限できます{% ifversion fpt or ghes or ghec %}（パブリック、内部、プライベート{% elsif ghae %}{% else %}パブリックまたはプライベートなど）{% endif %}。
+You can restrict who has access to a repository by choosing a repository's visibility: {% ifversion ghes or ghec %}public, internal, or private{% elsif ghae %}private or internal{% else %} public or private{% endif %}.
 
-{% ifversion ghae %} ユーザアカウント所有のリポジトリを作成すると、リポジトリは常にプライベートになります。 Organization 所有のリポジトリを作成するときに、プライベートリポジトリにするか内部リポジトリにするかを選択できます。{% else %}リポジトリを作成するときに、リポジトリをパブリックにするかプライベートにするかを選択できます。{% ifversion fpt or ghes or ghec %} Enterprise アカウントが所有する Organization {% ifversion fpt or ghec %} でリポジトリを作成している場合は{% endif %}、リポジトリを内部にすることもできます。{% endif %}{% endif %}
+{% ifversion fpt or ghec or ghes %}
 
-{% ifversion ghes %}
-If {% data variables.product.product_location %} is not in private mode or behind a firewall, public repositories are accessible to everyone on the internet. そうではない場合、外部のコラボレータを含め、{% data variables.product.product_location %} を使用するすべてのユーザがパブリックリポジトリを利用できます。 プライベートリポジトリには、自分、明示的にアクセスを共有するユーザ、および Organization リポジトリの場合は特定の Organization メンバーのみがアクセスできます。 {% ifversion ghes %} Internal repositories are accessible to enterprise members. 詳しい情報については、「[内部リポジトリについて](#about-internal-repositories)」を参照してください。{% endif %}
+When you create a repository, you can choose to make the repository public or private.{% ifversion ghec or ghes %} If you're creating the repository in an organization{% ifversion ghec %} that is owned by an enterprise account{% endif %}, you can also choose to make the repository internal.{% endif %}{% endif %}{% ifversion fpt %} Repositories in organizations that use {% data variables.product.prodname_ghe_cloud %} and are owned by an enterprise account can also be created with internal visibility. For more information, see [the {% data variables.product.prodname_ghe_cloud %} documentation](/enterprise-cloud@latest/repositories/creating-and-managing-repositories/about-repositories).
+
 {% elsif ghae %}
-プライベートリポジトリには、自分、明示的にアクセスを共有するユーザ、および Organization リポジトリの場合は特定の Organization メンバーのみがアクセスできます。 内部リポジトリには、すべての Enterprise メンバーがアクセスできます。 詳しい情報については、「[内部リポジトリについて](#about-internal-repositories)」を参照してください。
-{% else %}
-パブリックリポジトリには、インターネット上のすべてのユーザがアクセスできます。 プライベートリポジトリには、自分、明示的にアクセスを共有するユーザ、および Organization リポジトリの場合は特定の Organization メンバーのみがアクセスできます。 内部リポジトリには、Enterprise メンバーがアクセスできます。 詳しい情報については、「[内部リポジトリについて](#about-internal-repositories)」を参照してください。
+
+When you create a repository owned by your personal account, the repository is always private. When you create a repository owned by an organization, you can choose to make the repository private or internal.
+
 {% endif %}
 
-Organization のオーナーは、Organization 内で作成されたすべてのリポジトリにいつでもアクセスできます。 For more information, see "[Repository roles for an organization](/organizations/managing-access-to-your-organizations-repositories/repository-roles-for-an-organization)."
+{%- ifversion fpt or ghec %}
+- パブリックリポジトリには、インターネット上のすべてのユーザがアクセスできます。
+- プライベートリポジトリには、自分、明示的にアクセスを共有するユーザ、および Organization リポジトリの場合は特定の Organization メンバーのみがアクセスできます。
+{%- elsif ghes %}
+- If {% data variables.product.product_location %} is not in private mode or behind a firewall, public repositories are accessible to everyone on the internet. そうではない場合、外部のコラボレータを含め、{% data variables.product.product_location %} を使用するすべてのユーザがパブリックリポジトリを利用できます。
+- プライベートリポジトリには、自分、明示的にアクセスを共有するユーザ、および Organization リポジトリの場合は特定の Organization メンバーのみがアクセスできます。
+{%- elsif ghae %}
+- プライベートリポジトリには、自分、明示的にアクセスを共有するユーザ、および Organization リポジトリの場合は特定の Organization メンバーのみがアクセスできます。
+{%- endif %}
+{%- ifversion ghec or ghes or ghae %}
+- 内部リポジトリには、すべての Enterprise メンバーがアクセスできます。 詳しい情報については、「[内部リポジトリについて](#about-internal-repositories)」を参照してください。
+{%- endif %}
+
+Organization のオーナーは、Organization 内で作成されたすべてのリポジトリにいつでもアクセスできます。 詳しい情報については「[Organizationのリポジトリロール](/organizations/managing-access-to-your-organizations-repositories/repository-roles-for-an-organization)」を参照してください。
 
 リポジトリの管理者権限を持つユーザは、既存のリポジトリの可視性を変更できます。 詳細は「[リポジトリの可視性を設定する](/github/administering-a-repository/setting-repository-visibility)」を参照してください。
 
-{% ifversion fpt or ghae or ghes or ghec %}
+{% ifversion ghes or ghec or ghae %}
 ## インターナルリポジトリについて
-
-{% note %}
-
-**注釈:** {% data reusables.gated-features.internal-repos %}
-
-{% endnote %}
 
 {% data reusables.repositories.about-internal-repos %}インナーソースに関する詳しい情報については、{% data variables.product.prodname_dotcom %}のホワイトペーパー「[インナーソース入門](https://resources.github.com/whitepapers/introduction-to-innersource/)」を参照してください。
 
@@ -83,7 +90,15 @@ All enterprise members have read permissions to the internal repository, but int
 
 {% data reusables.repositories.internal-repo-default %}
 
-Any member of the enterprise can fork any internal repository owned by an organization in the enterprise. The forked repository will belong to the member's user account, and the visibility of the fork will be private. Enterprise が所有するすべての Organization からユーザが削除されると、そのユーザの内部リポジトリのフォークは自動的に削除されます。
+{% ifversion ghec %}Unless your enterprise uses {% data variables.product.prodname_emus %}, members{% else %}Members{% endif %} of the enterprise can fork any internal repository owned by an organization in the enterprise. The forked repository will belong to the member's personal account, and the visibility of the fork will be private. Enterprise が所有するすべての Organization からユーザが削除されると、そのユーザの内部リポジトリのフォークは自動的に削除されます。
+
+{% ifversion ghec %}
+{% note %}
+
+**Note:** {% data variables.product.prodname_managed_users_caps %} cannot fork internal repositories. For more information, see "[About {% data variables.product.prodname_emus %}](/admin/identity-and-access-management/using-enterprise-managed-users-for-iam/about-enterprise-managed-users#abilities-and-restrictions-of-managed-user-accounts)."
+
+{% endnote %}
+{% endif %}
 {% endif %}
 
 ## リポジトリでコンテンツと diff の表示を制限する
@@ -94,9 +109,9 @@ Any member of the enterprise can fork any internal repository owned by an organi
 
 ### テキストの制限
 
-Text files over **512 KB** are always displayed as plain text. コードの構文は強調表示されず、prose ファイルは HTML (Markdown、AsciiDoc、*その他*) に変換されません。
+Text files over **512 KB** are always displayed as plain text. Code is not syntax highlighted, and prose files are not converted to HTML (such as Markdown, AsciiDoc, *etc.*).
 
-**5 MB** を超えるテキスト ファイルは raw URL を介してしか使用できません。これは `{% data variables.product.raw_github_com %}` を通じて、たとえば `https://{% data variables.product.raw_github_com %}/octocat/Spoon-Knife/master/index.html` のように提供されます。 ファイルの raw URL を取得するには、[**Raw**] ボタンを押します。
+Text files over **5 MB** are only available through their raw URLs, which are served through `{% data variables.product.raw_github_com %}`; for example, `https://{% data variables.product.raw_github_com %}/octocat/Spoon-Knife/master/index.html`. Click the **Raw** button to get the raw URL for a file.
 
 ### diff の制限
 
@@ -111,7 +126,7 @@ diff はきわめて大きくなることがあるため、コミット、プル
 
 ### コミット リストの制限
 
-比較ビューとプルリクエストのページでは、`base` リビジョンと `head` リビジョンの間にコミットのリストが表示されます。 このリストは **250** コミットに制限されています。 その制限を超える場合は、追加のコミットがあるという注意書きが表示されます (コミット自体は表示されません)。
+比較ビューとプルリクエストのページでは、`base` リビジョンと `head` リビジョンの間にコミットのリストが表示されます。 These lists are limited to **250** commits. その制限を超える場合は、追加のコミットがあるという注意書きが表示されます (コミット自体は表示されません)。
 
 ## 参考リンク
 

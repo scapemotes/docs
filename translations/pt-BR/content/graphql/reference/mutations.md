@@ -18,6 +18,4 @@ Cada esquema de GraphQL tem um tipo de raiz para consultas e mutações. O [tipo
 
 Para obter mais informações, consulte "[Sobre mutações](/graphql/guides/forming-calls-with-graphql#about-mutations)".
 
-{% for item in graphql.schemaForCurrentVersion.mutations %}
-  {% include graphql-mutation %}
-{% endfor %}
+<!-- Content after this section is automatically generated -->

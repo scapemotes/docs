@@ -10,10 +10,6 @@
     }
   }
 
-  p {
-    margin: 0;
-  }
-
   p:not(:first-child) {
     margin-top: 1rem;
   }
@@ -27,4 +23,17 @@
     padding: 0.5rem 0.5rem 0.5rem 0;
     margin-bottom: 0;
   }
+
+  &.note,
+  &.warning,
+  &.tip,
+  &.danger {
+    p {
+      margin: 0;
+    }
+  }
+}
+
+.warning {
+  font-weight: normal;
 }

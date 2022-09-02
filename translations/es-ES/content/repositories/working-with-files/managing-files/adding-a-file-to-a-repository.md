@@ -9,6 +9,7 @@ redirect_from:
   - /github/managing-files-in-a-repository/adding-a-file-to-a-repository-using-the-command-line
   - /github/managing-files-in-a-repository/managing-files-on-github/adding-a-file-to-a-repository
   - /github/managing-files-in-a-repository/managing-files-using-the-command-line/adding-a-file-to-a-repository-using-the-command-line
+  - /github/managing-large-files/about-large-files-on-github
 versions:
   fpt: '*'
   ghes: '*'
@@ -21,7 +22,7 @@ shortTitle: Agregar un archivo
 
 ## Agregar un archivo a un repositorio en {% data variables.product.product_name %}
 
-Los archivos que agregues a un repositorio mediante un navegador están limitados a {% data variables.large_files.max_github_browser_size %} por archivo. Puedes agregar archivos más grandes, de hasta {% data variables.large_files.max_github_size %} cada uno, mediante la línea de comando. Para obtener más información, consulta "[Agregar un archivo a un repositorio mediante la línea de comando](#adding-a-file-to-a-repository-using-the-command-line)".
+Los archivos que agregues a un repositorio mediante un navegador están limitados a {% data variables.large_files.max_github_browser_size %} por archivo. Puedes agregar archivos más grandes, de hasta {% data variables.large_files.max_github_size %} cada uno, mediante la línea de comando. Para obtener más información, consulta "[Agregar un archivo a un repositorio mediante la línea de comando](#adding-a-file-to-a-repository-using-the-command-line)". Para agregar archivos mayores a {% data variables.large_files.max_github_size %}, debes utilizar {% data variables.large_files.product_name_long %}. Para obtener más información, consulta la sección "[Acerca de los archivos grandes en {% data variables.product.product_name %}](/repositories/working-with-files/managing-large-files/about-large-files-on-github)".
 
 {% tip %}
 
@@ -40,7 +41,7 @@ Los archivos que agregues a un repositorio mediante un navegador están limitado
 
 ## Agregar un archivo a un repositorio utilizando la línea de comando
 
-You can upload an existing file to a repository on {% ifversion ghae %}{% data variables.product.product_name %}{% else %}{% data variables.product.product_location %}{% endif %} using the command line.
+Puedes cargar un archivo existente a un repositorio en {% ifversion ghae %}{% data variables.product.product_name %}{% else %}{% data variables.product.product_location %}{% endif %} utilizando la línea de comandos.
 
 {% tip %}
 
@@ -69,4 +70,4 @@ You can upload an existing file to a repository on {% ifversion ghae %}{% data v
 
 ## Leer más
 
-- [Agregar un proyecto existente a GitHub mediante la línea de comando](/articles/adding-an-existing-project-to-github-using-the-command-line)"
+- "[Agregar código hspedado localmente en {% data variables.product.product_name %}](/get-started/importing-your-projects-to-github/importing-source-code-to-github//adding-locally-hosted-code-to-github)"

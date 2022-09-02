@@ -2,7 +2,7 @@
 title: コミットおよびタグの署名の検証ステータスを確認する
 intro: '{% data variables.product.product_name %}のコミットやタグの署名について、検証ステータスを確認できます。'
 redirect_from:
-  - /articles/checking-your-gpg-commit-and-tag-signature-verification-status/
+  - /articles/checking-your-gpg-commit-and-tag-signature-verification-status
   - /articles/checking-your-commit-and-tag-signature-verification-status
   - /github/authenticating-to-github/checking-your-commit-and-tag-signature-verification-status
   - /github/authenticating-to-github/troubleshooting-commit-signature-verification/checking-your-commit-and-tag-signature-verification-status
@@ -22,7 +22,10 @@ shortTitle: Check verification status
 1. {% data variables.product.product_name %}上で、プルリクエストに移動します。
 {% data reusables.repositories.review-pr-commits %}
 3. コミットの省略されたコミットハッシュの横に、コミット署名が検証済みか{% ifversion fpt or ghec %}、部分的に検証済みか、{% endif %}未検証かを示すボックスがあります。 ![署名されたコミット](/assets/images/help/commits/gpg-signed-commit-verified-without-details.png)
-4. コミットシグニチャの詳細情報を表示するには、[**検証済み**]{% ifversion fpt or ghec %}、[**部分的に検証済み**]、{% endif %}または [**未検証**] をクリックします。 ![検証された署名済みコミット](/assets/images/help/commits/gpg-signed-commit_verified_details.png)
+4. コミットシグニチャの詳細情報を表示するには、[**検証済み**]{% ifversion fpt or ghec %}、[**部分的に検証済み**]、{% endif %}または [**未検証**] をクリックします。 GPG signed commits will show the ID of the key that was used. ![Verified GPG signed commit](/assets/images/help/commits/gpg-signed-commit_verified_details.png)
+{% ifversion ssh-commit-verification %}
+  SSH signed commits will show the signature of the public key that was used. ![Verified SSH signed commit](/assets/images/help/commits/ssh-signed-commit-verified-details.png)
+{% endif %}
 
 ## タグの署名検証のステータスの確認
 

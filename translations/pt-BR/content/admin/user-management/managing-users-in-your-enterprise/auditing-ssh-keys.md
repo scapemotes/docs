@@ -2,7 +2,7 @@
 title: Auditar chaves SSH
 intro: Os administradores do site podem iniciar uma auditoria em toda a instância das chaves SSH.
 redirect_from:
-  - /enterprise/admin/articles/auditing-ssh-keys/
+  - /enterprise/admin/articles/auditing-ssh-keys
   - /enterprise/admin/user-management/auditing-ssh-keys
   - /admin/user-management/auditing-ssh-keys
 versions:
@@ -50,9 +50,11 @@ Depois de aprovar ou rejeitar as chaves, o usuário poderá interagir normalment
 
 ## Adicionar chave SSH
 
-Os novos usuários deverão informar a senha ao adicionar uma chave SSH:
+{% ifversion ghes %}
 
-![Confirmação de senha](/assets/images/help/settings/sudo_mode_popup.png)
+Quando um novo usuário adiciona uma chave SSH a uma conta, para confirmar o acesso do usuário, {% data variables.product.product_name %} solicitará a autenticação. Para obter mais informações, consulte "[modo Sudo](/authentication/keeping-your-account-and-data-secure/sudo-mode)".
+
+{% endif %}
 
 Quando adicionar a chave, o usuário receberá um e-mail de notificação como este:
 

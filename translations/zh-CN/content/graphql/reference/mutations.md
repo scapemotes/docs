@@ -18,6 +18,4 @@ topics:
 
 更多信息请参阅“[关于突变](/graphql/guides/forming-calls-with-graphql#about-mutations)。”
 
-{% for item in graphql.schemaForCurrentVersion.mutations %}
-  {% include graphql-mutation %}
-{% endfor %}
+<!-- Content after this section is automatically generated -->

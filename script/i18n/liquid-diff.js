@@ -1,13 +1,16 @@
 #!/usr/bin/env node
 
-import program from 'commander'
+import { program } from 'commander'
 import { compareLiquidTags } from '../../lib/liquid-tags/tokens.js'
 import languages from '../../lib/languages.js'
 
 program
   .argument('<files...>', 'The file name(s) without the language dir. \nI.E. content/foo.md')
   .description('Shows the differences of liquid tags between two files')
-  .requiredOption('-l, --language <language>', `Choose one of these languages to compare: ${Object.keys(languages).filter(l => l !== 'en')}`)
+  .requiredOption(
+    '-l, --language <language>',
+    `Choose one of these languages to compare: ${Object.keys(languages).filter((l) => l !== 'en')}`
+  )
   .parse(process.argv)
 
 function reportFileDifference(diff) {

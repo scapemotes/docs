@@ -1,1 +1,1 @@
-A user account is considered to be dormant if it has not been active for {% ifversion ghec %}90 days{% else %}at least a month{% endif %}.{% ifversion ghes %} You may choose to suspend dormant users to release user licenses.{% endif %}
+{% ifversion not ghec%}デフォルトでは、{% else %}{% endif %}ユーザアカウントは90日間アクティブでなかった場合に休眠状態と見なされます。 {% ifversion not ghec %}ユーザが休眠状態と見なされ{% ifversion ghes%}、休眠ユーザをサスペンドしてユーザライセンスを解放す{% endif %}るまでに非アクティブでなければならない期間を設定できます。{% endif %}
